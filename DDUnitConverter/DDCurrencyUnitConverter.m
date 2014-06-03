@@ -55,13 +55,7 @@
 }
 
 - (NSString *)string {
-    return [[[NSString alloc] initWithData:data encoding:encoding] autorelease];
-}
-
-- (void)dealloc {
-    [error release];
-    [data release];
-    [super dealloc];
+    return [[NSString alloc] initWithData:data encoding:encoding];
 }
 
 @end
@@ -127,7 +121,7 @@ static dispatch_queue_t updateQueue = nil;
 @implementation DDUnitConverter (DDCurrencyUnitConverter)
 
 + (id) currencyUnitConverter {
-	return [[[DDCurrencyUnitConverter alloc] init] autorelease];
+	return [[DDCurrencyUnitConverter alloc] init];
 }
 
 @end
@@ -143,17 +137,15 @@ static dispatch_queue_t updateQueue = nil;
 + (NSError *) refreshExchangeRatesInBackground {
 	if ([NSThread currentThread] == [NSThread mainThread]) { return nil; }
     
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
 	
 	NSURL * imfURL = [NSURL URLWithString:@"http://www.imf.org/external/np/fin/data/rms_five.aspx?tsvflag=Y"];
     NSURLRequest *imfRequest = [NSURLRequest requestWithURL:imfURL];
     DDCurrencyUnitConverterConnectionDelegate *tmpDelegate = [[DDCurrencyUnitConverterConnectionDelegate alloc] init];
     
-    NSURLConnection *imfConnection = [[NSURLConnection alloc] initWithRequest:imfRequest delegate:tmpDelegate];
+    [NSURLConnection connectionWithRequest:imfRequest delegate:tmpDelegate];
     while ([tmpDelegate isFinished] == NO) {
         [[NSRunLoop currentRunLoop] runUntilDate:[NSDate date]];
     }
-    [imfConnection release];
     
     NSString *raw = [tmpDelegate string];
     NSError *error = [tmpDelegate error];
@@ -189,13 +181,8 @@ static dispatch_queue_t updateQueue = nil;
 			}
 		}
 	}
-	
-    [error retain];
-    [tmpDelegate release];
     
-	[pool drain];
-    
-    return [error autorelease];
+    return error;
 }
 
 + (void) initialize {
@@ -245,7 +232,6 @@ static dispatch_queue_t updateQueue = nil;
             dispatch_async(currentQueue, block);
         }
     });
-    [completionHandler release];
 }
 
 @end

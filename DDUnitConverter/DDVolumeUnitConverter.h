@@ -38,6 +38,7 @@ enum {
 	DDVolumeUnitDrams,
 	DDVolumeUnitDrops,
 	DDVolumeUnitGallons,
+    DDVolumeUnitUKGallons,
 	DDVolumeUnitUKGills,
 	DDVolumeUnitUSGills,
 	DDVolumeUnitLiters,

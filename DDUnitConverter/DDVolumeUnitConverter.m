@@ -66,6 +66,8 @@
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:649 exponent:-10 isNegative:NO]; break;
 		case DDVolumeUnitGallons:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:3785411784 exponent:-12 isNegative:NO]; break;
+        case DDVolumeUnitUKGallons:
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:454609 exponent:-8 isNegative:NO]; break;
 		case DDVolumeUnitUKGills:
 			multiplier = [NSDecimalNumber decimalNumberWithMantissa:142065 exponent:-9 isNegative:NO]; break;
 		case DDVolumeUnitUSGills:

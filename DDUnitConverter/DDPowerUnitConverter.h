@@ -21,7 +21,8 @@ enum {
 	DDPowerUnitMetricHorsepower,
 	DDPowerUnitJoulesPerSecond,
 	DDPowerUnitKilogramForceMetersPerSecond,
-	DDPowerUnitWatts
+	DDPowerUnitWatts,
+    DDPowerUnitKilowatts
 };
 typedef NSUInteger DDPowerUnit;
 

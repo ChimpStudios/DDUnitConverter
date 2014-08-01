@@ -32,6 +32,9 @@
 		case DDPowerUnitJoulesPerSecond:
 		case DDPowerUnitWatts:
 			break;
+        case DDPowerUnitKilowatts:
+			multiplier = [NSDecimalNumber decimalNumberWithMantissa:1 exponent:3 isNegative:NO]; break;
+            break;
 		case DDPowerUnitKilogramForceMetersPerSecond:
 			multiplier = [NSDecimalNumber gConstant_dd]; break;
 		default:

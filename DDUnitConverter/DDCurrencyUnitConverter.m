@@ -198,7 +198,7 @@ static dispatch_queue_t updateQueue = nil;
 
 + (NSDecimalNumber *) multiplierForUnit:(DDUnit)unit {
 	NSDecimalNumber * multiplier = [NSDecimalNumber one];
-	if (unit < DDCurrencyUnitSDR) {
+	if (unit < DDCurrencyUnitSDR) { // less than the total number of currencies supported
         NSString *name = _DDCurrencyNames[unit];
         multiplier = [_DDCurrencyExchangeRates objectForKey:name];
         if (multiplier == nil) {
